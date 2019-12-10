@@ -9,7 +9,6 @@ public class ResultadoLojaProduto {
     private String marca;
     private String link;
     private String nomeLoja;
-    private Integer idLoja;
 
     public ResultadoLojaProduto(Integer id, Double preco){
         this.id = id;
@@ -104,13 +103,5 @@ public class ResultadoLojaProduto {
 
     public void setNomeLoja(String nomeLoja) {
         this.nomeLoja = nomeLoja;
-    }
-
-    public Integer getIdLoja() {
-        return idLoja;
-    }
-
-    public void setIdLoja(Integer idLoja) {
-        this.idLoja = idLoja;
     }
 }

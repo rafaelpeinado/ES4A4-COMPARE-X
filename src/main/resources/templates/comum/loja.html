@@ -11,13 +11,13 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/fontawesome.min.css">
 
-    <title>compareX</title>
+    <title>Resultado da Busca</title>
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 
 <body>
     <div class="container-fluid">
-    <form method="get" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
+    <form method="get" th:object="${produto}" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
         <a class="navbar-brand col-sm-3 col-md-3 mr-0" th:href="@{/}">CompareX</a>
 
             <input name="pesquisar" class="form-control form-control-danger w-50" type="text"id ="input_princi" placeholder="digite o produto"
@@ -34,30 +34,31 @@
     <div class="container">
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted" th:each="loja : ${lojas}" th:text="${loja.nome}" th:href="@{'/loja/'+${loja.id}}"></a>
+                    <a class="p-2 text-muted" th:each="loja : ${lojas}" th:text="${loja.nome}" th:href="@{'/loja/'+${loja.id}}"></a>
             </nav>
         </div>
     </div>
     <hr>
-    <div class="pricing-header px-2 py-2 pt-md-4 pb-md-3 mx-auto text-center">
-        <h1 class="display-4">Preços</h1>
-        <p class="lead">Encontre comparativos de preços dos produtos pesquisados.</p>
-        <h3 class="">Os mais buscados:</h3>
-    </div>
-    </hr>
-    <div class="container">
-        <div class="card-deck">
-            <th:block th:each="produto : ${produtos}">
-                <div class="card">
-                    <img th:src="${produto.imagem}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title " th:text="${produto.marca}"></h5></h5>
-                        <p class="card-text" th:text="${produto.nome}"></p>
-                        <p class="card-text"><small class="text-muted">Ultimas atualizações</small></p>
+    <section>
+            <div class="container">
+                <div id="index">
+                <!-- <th:block th:each="produto : ${produtos}"> -->
+                    <div class="card" th:each="produto : ${produtos}">
+                        <p id="id-produto" th:text="${produto.id}"></p>
+                        <a class="product-image" href="#">
+                            <img th:src="${produto.imagem}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                          <h5 class="card-title" th:text="${produto.nome}"><a href="#"></a></h5>
+                          <small>Preço:</small>
+                          <p class="card-text" th:text="'R$ ' + ${#numbers.formatDecimal(produto.preco, 0, 2)}"></p>
+                          <a th:href="${produto.link}" target="_blank" class="btn btn-primary">Ver na página</a>
+                        </div>
                     </div>
-                </div>       
-        </div>
-    </div>
+                </div>
+            </div>
+    </section>
+    </hr>
     <footer class="pt-4 my-md-5 pt-md-5 border-top bg-light">
         <div class="row">
             <div class="col-12 col-md">

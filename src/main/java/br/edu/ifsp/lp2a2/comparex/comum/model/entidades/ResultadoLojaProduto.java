@@ -8,6 +8,8 @@ public class ResultadoLojaProduto {
     private String nome;
     private String marca;
     private String link;
+    private String nomeLoja;
+    private Integer idLoja;
 
     public ResultadoLojaProduto(Integer id, Double preco){
         this.id = id;
@@ -28,6 +30,16 @@ public class ResultadoLojaProduto {
         this.marca = marca;
         this.link = link;
         this.preco = preco;
+    }
+
+    public ResultadoLojaProduto(Integer id, String imagem, String nome, String marca, String link, Double preco, String nomeLoja) {
+        this.id = id;
+        this.imagem = imagem;
+        this.nome = nome;
+        this.marca = marca;
+        this.link = link;
+        this.preco = preco;
+        this.nomeLoja = nomeLoja;
     }
 
     public Integer getId() {
@@ -80,5 +92,25 @@ public class ResultadoLojaProduto {
 
     public String getLink() {
         return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getNomeLoja() {
+        return nomeLoja;
+    }
+
+    public void setNomeLoja(String nomeLoja) {
+        this.nomeLoja = nomeLoja;
+    }
+
+    public Integer getIdLoja() {
+        return idLoja;
+    }
+
+    public void setIdLoja(Integer idLoja) {
+        this.idLoja = idLoja;
     }
 }

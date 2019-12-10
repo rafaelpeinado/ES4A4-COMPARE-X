@@ -52,7 +52,7 @@
                           <h5 class="card-title" th:text="${produto.nome}"><a href="#"></a></h5>
                           <small>Preço:</small>
                           <p class="card-text" th:text="'R$ ' + ${#numbers.formatDecimal(produto.preco, 0, 2)}"></p>
-                          <small class="card-price" th:text="${produto.marca}"></small>
+                          <small class="card-price" th:text="${produto.nomeLoja}"></small>
                           <a th:href="${produto.link}" target="_blank" class="btn btn-primary">Ver na página</a>
                         </div>
                     </div>

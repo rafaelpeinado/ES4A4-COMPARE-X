@@ -1,8 +1,6 @@
 package br.edu.ifsp.lp2a2.comparex.comum.model.entidades;
 
 import java.util.List;
-
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

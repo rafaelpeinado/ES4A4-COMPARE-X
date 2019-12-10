@@ -13,6 +13,5 @@ public interface ProdutosRespository extends CrudRepository<Produto, Integer> {
     // Iterable<Produto> findByPontuacaoOrder();
     List<Produto> findByNomeContaining(String nome);
     
-    /*@Query("SELECT p FROM Produto p join fetch p.lojasProdutos c WHERE p.nome LIKE %?1%")
-    List<Produto> findByNomeContaining(String nome);*/
+    List<Produto> findTop3ByOrderByNomeAsc();
 }

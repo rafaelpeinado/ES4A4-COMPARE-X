@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasProdutosRepository;
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
 /*import br.edu.ifsp.lp2a2.comparex.comum.services.ComparadorProdutosService;*/
 
@@ -13,20 +14,24 @@ public class HomeController {
     
 private ProdutosRespository produtosRepository;
 private LojasProdutosRepository lojasProdutosRepository;
+private LojasRepository lojasRepository;
 	
-    public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository){
+    public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository, LojasRepository lojasRepository){
 		this.produtosRepository = produtosRepository;
 		this.lojasProdutosRepository = lojasProdutosRepository;
+		this.lojasRepository = lojasRepository;
     }
    
     @GetMapping("/")
 	public String index(Model model) {
-		/*model.addAttribute("produtos", repository.findAll()); */
+		model.addAttribute("produtos", produtosRepository.findTop3ByOrderByNomeAsc());
+		model.addAttribute("lojas", lojasRepository.findAll());
 		return "comum/index";
 	}
 
    @GetMapping(value = "/search", params = {"pesquisar"})
    public String resultado(Model model, String pesquisar) {
+		model.addAttribute("lojas", lojasRepository.findAll());
 		model.addAttribute("produtos", produtosRepository.findByNomeContaining(pesquisar));
 		model.addAttribute("precos", lojasProdutosRepository.menorPreco());
 		model.addAttribute("quantidades", lojasProdutosRepository.quantidadeLojas());

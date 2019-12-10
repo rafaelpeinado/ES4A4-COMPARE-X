@@ -46,79 +46,20 @@
     <section>
             <div class="container">
                 <div id="index">
-                <th:block th:each="produto : ${produtos}">
-                    <div class="card">
+                <!-- <th:block th:each="produto : ${produtos}"> -->
+                    <div class="card" th:each="produto : ${produtos}">
+                        <p id="id-produto" th:text="${produto.id}"></p>
                         <a class="product-image" href="#">
                             <img th:src="${produto.imagem}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                           <h5 class="card-title" th:text="${produto.nome}"><a href="#"></a></h5>
                           <small>a partir de:</small>
-                          <p class="card-text">R$ 24,90</p>
-                          <small class="card-price">em 35 lojas</small>
+                          <p class="card-text" th:each="preco : ${precos}" th:if="(${preco.id} == ${produto.id})" th:text="'R$ ' + ${#numbers.formatDecimal(preco.preco, 0, 2)}"></p>
+                          <small class="card-price" th:each="quantidade : ${quantidades}" th:if="(${quantidade.id} == ${produto.id})" th:text="${quantidade.quantidade}+' lojas'"></small>
                           <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
                         </div>
                     </div>
-                    <!--<div class="card">
-                        <a class="product-image" href="#">
-                            <img src="https://cdn.leroymerlin.com.br/products/torneira_para_parede_de_cozinha_cromado_niteroi_delinia_89315345_7699_600x600.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="#">Torneira para Parede de Cozinha Bica Alta Cromado Niterói Delinia</a></h5>
-                          <small>a partir de:</small>
-                          <p class="card-text">R$ 139,90</p>
-                          <small class="card-price">em 35 lojas</small>
-                          <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a class="product-image" href="#">
-                            <img src="https://cdn.leroymerlin.com.br/products/chuveiro_eletrico_220v_7700w_optima_hydra_89445503_0bb2_600x600.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="#">Chuveiro Elétrico Multitemperatura 220V 7700W Branco Optima Hydra</a></h5>
-                          <small>a partir de:</small>
-                          <p class="card-text">R$ 104,90</p>
-                          <small class="card-price">em 35 lojas</small>
-                          <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a class="product-image" href="#">
-                            <img src="https://cdn.leroymerlin.com.br/products/cimento_votoran_todas_as_obras_cp_ii_z_32_50kg_89368944_0001_600x600.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="#"> Cimento CP II F 32 Todas as Obras 50kg Votoran</a></h5>
-                          <small>a partir de:</small>
-                          <p class="card-text">R$ 18,89</p>
-                          <small class="card-price">em 35 lojas</small>
-                          <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a class="product-image" href="#">
-                            <img src="https://cdn.leroymerlin.com.br/products/caixa_dagua_de_polietileno_com_tampa_500l_equation_89509546_9168_600x600.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="#">Caixa d'água de Polietileno com Tampa 500L Equation</a></h5>
-                          <small>a partir de:</small>
-                          <p class="card-text">R$ 139,90</p>
-                          <small class="card-price">em 35 lojas</small>
-                          <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a class="product-image" href="#">
-                            <img src="https://cdn.leroymerlin.com.br/products/valvula_de_escoamento_para_lavatorio_metal_curta_1_deca_85505175_2031_600x600.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="#">Válvula para Pia de Banheiro Metal Curta 1" Deca</a></h5>
-                          <small>a partir de:</small>
-                          <p class="card-text">R$ 55,90</p>
-                          <small class="card-price">em 35 lojas</small>
-                          <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
-                        </div>
-                    </div>-->
                 </div>
             </div>
     </section>
@@ -166,3 +107,5 @@
 </body>
 
 </html>
+
+<!--  th:each="quantidade : ${quantidades}" th:if="(${quantidade.id} == ${produto.id})" th:text="${quantidade.quantidade}"-->

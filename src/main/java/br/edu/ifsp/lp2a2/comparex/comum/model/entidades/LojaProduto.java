@@ -1,5 +1,6 @@
 package br.edu.ifsp.lp2a2.comparex.comum.model.entidades;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,11 +17,11 @@ public class LojaProduto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	/*@Column(name="id_produto")
-	private int idProduto;*/
+	@Column(name="id_produto")
+	private int idProduto;
 	
-	/*@Column(name="id_loja")
-	private int idLoja;*/
+	@Column(name="id_loja")
+	private int idLoja;
 	
 	private String link;
 	private double preco;
@@ -42,18 +43,18 @@ public class LojaProduto {
 		this.id = id;
 	}
 	
-	/*public int getIdProduto() {
+	public int getIdProduto() {
 		return idProduto;
 	}
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
-	}*/
-	/*public int getIdLoja() {
+	}
+	public int getIdLoja() {
 		return idLoja;
 	}
 	public void setIdLoja(int idLoja) {
 		this.idLoja = idLoja;
-	}*/
+	}
 	public String getLink() {
 		return link;
 	}
@@ -66,7 +67,6 @@ public class LojaProduto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
 	
 	public Loja getLoja() {
 		return loja;
